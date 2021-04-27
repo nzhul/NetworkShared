@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using GameServer.Shared.Attributes;
+using NetworkingShared.Attributes;
 
-namespace GameServer.Shared
+namespace NetworkingShared
 {
     public static class HandlerRegistry
     {

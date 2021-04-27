@@ -1,7 +1,7 @@
 ﻿using System;
 using LiteNetLib.Utils;
 
-namespace GameServer.Shared.Packets.Battle
+namespace NetworkingShared.Packets.Battle
 {
     public struct Net_EndTurnRequest : INetPacket
     {

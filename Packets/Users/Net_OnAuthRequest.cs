@@ -1,4 +1,4 @@
-﻿using GameServer.Shared;
+﻿using NetworkingShared;
 using LiteNetLib.Utils;
 
 namespace Assets.Scripts.Network.Shared.NetMessages.Users

@@ -1,4 +1,4 @@
-﻿namespace GameServer.Shared
+﻿namespace NetworkingShared
 {
     public interface IPacketHandler
     {

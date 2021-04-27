@@ -1,8 +1,8 @@
 ﻿using System;
-using GameServer.Shared.Models;
 using LiteNetLib.Utils;
+using NetworkShared.Enums;
 
-namespace GameServer.Shared.Packets.Battle
+namespace NetworkingShared.Packets.Battle
 {
 
     public struct Net_SwitchTurnEvent : INetPacket

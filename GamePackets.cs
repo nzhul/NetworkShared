@@ -1,6 +1,6 @@
 ﻿using LiteNetLib.Utils;
 
-namespace GameServer.Shared
+namespace NetworkingShared
 {
 
 

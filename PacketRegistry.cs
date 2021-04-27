@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GameServer.Shared
+namespace NetworkingShared
 {
     public static class PacketRegistry
     {

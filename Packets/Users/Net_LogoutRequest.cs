@@ -1,6 +1,6 @@
 ﻿using LiteNetLib.Utils;
 
-namespace GameServer.Shared.Packets.Users
+namespace NetworkingShared.Packets.Users
 {
     public struct Net_LogoutRequest : INetPacket
     {

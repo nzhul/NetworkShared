@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameServer.Shared.Attributes
+namespace NetworkingShared.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class HandlerRegisterAttribute : Attribute

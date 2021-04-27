@@ -1,7 +1,7 @@
 ﻿using System;
 using LiteNetLib;
 
-namespace GameServer.Shared
+namespace NetworkingShared
 {
     public static class NetworkUtils
     {

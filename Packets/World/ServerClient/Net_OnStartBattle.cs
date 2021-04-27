@@ -1,7 +1,7 @@
 ﻿using System;
-using GameServer.Shared.Models;
+using NetworkShared.Enums;
 
-namespace GameServer.Shared.Packets.World.ServerClient
+namespace NetworkingShared.Packets.World.ServerClient
 {
     [Serializable]
     public class Net_OnStartBattle : NetMessage

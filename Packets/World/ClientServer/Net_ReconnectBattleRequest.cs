@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameServer.Shared.Packets.World.ClientServer
+namespace NetworkingShared.Packets.World.ClientServer
 {
     [Serializable]
     public class Net_ReconnectBattleRequest : NetMessage

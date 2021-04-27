@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameServer.Shared.Users
+namespace NetworkingShared.Users
 {
     [Serializable]
     public class LoginResponse
