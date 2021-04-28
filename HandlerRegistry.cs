@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Loader;
 using NetworkingShared.Attributes;
 
 namespace NetworkingShared
@@ -31,8 +30,12 @@ namespace NetworkingShared
                 return;
             }
 
-            var handlers = AssemblyLoadContext.Default
-                .Assemblies.SelectMany(x => x.DefinedTypes)
+            // alternative:
+            // using System.Runtime.Loader;
+            // AssemblyLoadContext.Default.Assemblies
+
+            var handlers = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.DefinedTypes)
                 // Find concrete classes only
                 .Where(x => !x.IsAbstract && !x.IsInterface && !x.IsGenericTypeDefinition)
                 // Find only types implementing the interface
