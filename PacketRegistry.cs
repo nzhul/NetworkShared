@@ -21,7 +21,7 @@ namespace NetworkingShared
             }
         }
 
-        public static void Initialize()
+        public static void Initialize(Action<int> loggerCallback = null)
         {
             if (_packetTypes.Count > 0)
             {
@@ -38,6 +38,8 @@ namespace NetworkingShared
                 var instance = (INetPacket)Activator.CreateInstance(packet);
                 _packetTypes.Add(instance.Type, packet);
             }
+
+            loggerCallback?.Invoke(_packetTypes.Count);
         }
     };
 }

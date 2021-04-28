@@ -23,7 +23,7 @@ namespace NetworkingShared
             }
         }
 
-        public static void Initialize()
+        public static void Initialize(Action<int> loggerCallback = null)
         {
             if (_handlers.Count > 0)
             {
@@ -58,7 +58,7 @@ namespace NetworkingShared
                 }
             }
 
-            Console.WriteLine($"{handlers.Count()} handlers where registered!");
+            loggerCallback?.Invoke(_handlers.Count);
         }
     }
 }
