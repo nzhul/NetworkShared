@@ -16,7 +16,7 @@ namespace NetworkingShared.Packets.World.ClientServer
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
-            writer.Put(GameId)
+            writer.Put(GameId);
         }
     }
 }
