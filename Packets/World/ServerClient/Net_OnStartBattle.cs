@@ -1,15 +1,12 @@
 ﻿using System;
+using LiteNetLib.Utils;
 using NetworkShared.Enums;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
-    [Serializable]
-    public class Net_OnStartBattle : NetMessage
+    public struct Net_OnStartBattle : INetPacket
     {
-        public Net_OnStartBattle()
-        {
-            this.OperationCode = NetOperationCode.OnStartBattle;
-        }
+        public PacketType Type => PacketType.OnStartBattle;
 
         public Guid BattleId { get; set; }
 
@@ -26,5 +23,27 @@ namespace NetworkingShared.Packets.World.ServerClient
         public BattleScenario BattleScenario { get; set; }
 
         public Turn Turn { get; set; }
+
+        public void Deserialize(NetDataReader reader)
+        {
+            BattleId = Guid.Parse(reader.GetString());
+            AttackerArmyId = reader.GetInt();
+            DefenderArmyId = reader.GetInt();
+            SelectedUnitId = reader.GetInt();
+            AttackerType = (PlayerType)reader.GetByte();
+            DefenderType = (PlayerType)reader.GetByte();
+            BattleScenario = (BattleScenario)reader.GetByte();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put(AttackerArmyId);
+            writer.Put(DefenderArmyId);
+            writer.Put(SelectedUnitId);
+            writer.Put((byte)AttackerType);
+            writer.Put((byte)DefenderType);
+            writer.Put((byte)BattleScenario);
+        }
     }
 }
