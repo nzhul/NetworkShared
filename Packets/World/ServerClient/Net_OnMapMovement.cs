@@ -1,15 +1,11 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 using NetworkShared.Models;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
-    [Serializable]
-    public class Net_OnMapMovement : NetMessage
+    public struct Net_OnMapMovement : INetPacket
     {
-        public Net_OnMapMovement()
-        {
-            OperationCode = NetOperationCode.OnMapMovement;
-        }
+        public PacketType Type => PacketType.OnMapMovement;
 
         public string Error { get; set; }
 
@@ -17,10 +13,26 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public int ArmyId { get; set; }
 
-        //public int NewX { get; set; }
-
-        //public int NewY { get; set; }
-
         public Coord Destination { get; set; }
+
+
+
+        public void Deserialize(NetDataReader reader)
+        {
+            Error = reader.GetString();
+            Success = reader.GetByte();
+            ArmyId = reader.GetInt();
+            Destination = reader.Get<Coord>();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put(Error);
+            writer.Put(Success);
+            writer.Put(ArmyId);
+            writer.Put(Destination);
+
+        }
     }
 }

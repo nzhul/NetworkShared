@@ -1,15 +1,22 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.World.ClientServer
 {
-    [Serializable]
-    public class Net_ReconnectRequest : NetMessage
+    public struct Net_ReconnectRequest : INetPacket
     {
-        public Net_ReconnectRequest()
-        {
-            OperationCode = NetOperationCode.ReconnectRequest;
-        }
+        public PacketType Type => PacketType.ReconnectRequest;
 
         public int GameId { get; set; }
+
+        public void Deserialize(NetDataReader reader)
+        {
+            GameId = reader.GetInt();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put(GameId)
+        }
     }
 }
