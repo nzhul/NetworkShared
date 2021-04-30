@@ -38,6 +38,7 @@ namespace NetworkingShared.Packets.World.ServerClient
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
+            writer.Put(BattleId.ToString());
             writer.Put(AttackerArmyId);
             writer.Put(DefenderArmyId);
             writer.Put(SelectedUnitId);
