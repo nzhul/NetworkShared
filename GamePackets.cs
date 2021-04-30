@@ -2,50 +2,6 @@
 
 namespace NetworkingShared
 {
-
-
-    #region Packets
-    public struct StartBattleRequest : INetPacket
-    {
-        public PacketType Type => PacketType.StartBattleRequest;
-
-        public int AttackerArmyId;
-
-        public int DefenderArmyId;
-
-        public void Deserialize(NetDataReader reader)
-        {
-            AttackerArmyId = reader.GetInt();
-            DefenderArmyId = reader.GetInt();
-        }
-
-        public void Serialize(NetDataWriter writer)
-        {
-            writer.Put((byte)Type);
-            writer.Put(AttackerArmyId);
-            writer.Put(DefenderArmyId);
-        }
-    }
-
-    public struct EndBattleEvent : INetPacket
-    {
-        public PacketType Type => PacketType.OnEndBattle;
-
-        public int BattleId;
-
-        public void Deserialize(NetDataReader reader)
-        {
-            BattleId = reader.GetInt();
-        }
-
-        public void Serialize(NetDataWriter writer)
-        {
-            writer.Put((byte)Type);
-            writer.Put(BattleId);
-        }
-    }
-    #endregion
-
     #region Common
     public enum PacketType : byte
     {

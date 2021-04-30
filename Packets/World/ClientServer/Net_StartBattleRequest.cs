@@ -1,15 +1,11 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 using NetworkShared.Enums;
 
 namespace NetworkingShared.Packets.World.ClientServer
 {
-    [Serializable]
-    public class Net_StartBattleRequest : NetMessage
+    public struct Net_StartBattleRequest : INetPacket
     {
-        public Net_StartBattleRequest()
-        {
-            OperationCode = NetOperationCode.StartBattleRequest;
-        }
+        public PacketType Type => PacketType.StartBattleRequest;
 
         public int AttackerArmyId { get; set; }
 
@@ -18,6 +14,23 @@ namespace NetworkingShared.Packets.World.ClientServer
         public PlayerType AttackerType { get; set; }
 
         public PlayerType DefenderType { get; set; }
+
+        public void Deserialize(NetDataReader reader)
+        {
+            AttackerArmyId = reader.GetInt();
+            DefenderArmyId = reader.GetInt();
+            AttackerType = (PlayerType)reader.GetByte();
+            DefenderType = (PlayerType)reader.GetByte();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put(AttackerArmyId);
+            writer.Put(DefenderArmyId);
+            writer.Put((byte)AttackerType);
+            writer.Put((byte)DefenderType);
+        }
 
         public bool IsValid()
         {
