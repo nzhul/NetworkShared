@@ -3,7 +3,7 @@ using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.World.ClientServer
 {
-    public class Net_ReconnectBattleRequest : INetPacket
+    public struct Net_ReconnectBattleRequest : INetPacket
     {
         public PacketType Type => PacketType.ReconnectBattleRequest;
 
