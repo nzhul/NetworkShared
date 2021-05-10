@@ -102,6 +102,8 @@ namespace NetworkingShared
 
         OnEndBattle = 107, // TODO: Delete this.
 
+        OnReconnectBattleFail = 108
+
         #endregion
     }
 
