@@ -1,13 +1,18 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.World.ClientServer
 {
-    [Serializable]
-    public class Net_CancelFindOpponentRequest : NetMessage
+    public struct Net_CancelFindOpponentRequest : INetPacket
     {
-        public Net_CancelFindOpponentRequest()
+        public PacketType Type => PacketType.CancelFindOpponentRequest;
+
+        public void Deserialize(NetDataReader reader)
         {
-            OperationCode = NetOperationCode.CancelFindOpponentRequest;
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
         }
     }
 }

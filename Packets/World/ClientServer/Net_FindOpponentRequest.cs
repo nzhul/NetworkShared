@@ -1,21 +1,23 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 using NetworkingShared.Enums;
 
 namespace NetworkingShared.Packets.World.ClientServer
 {
-    [Serializable]
-    public class Net_FindOpponentRequest : NetMessage
+    public struct Net_FindOpponentRequest : INetPacket
     {
-        public Net_FindOpponentRequest()
-        {
-            OperationCode = NetOperationCode.FindOpponentRequest;
-        }
+        public PacketType Type => PacketType.FindOpponentRequest;
 
         public CreatureType Class { get; set; }
 
-        public bool IsValid()
+        public void Deserialize(NetDataReader reader)
         {
-            return true;
+            Class = (CreatureType)reader.GetByte();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put((byte)Class);
         }
     }
 }
