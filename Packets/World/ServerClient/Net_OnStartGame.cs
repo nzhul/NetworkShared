@@ -1,15 +1,22 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
-    [Serializable]
-    public class Net_OnStartGame : NetMessage
+    public struct Net_OnStartGame : INetPacket
     {
-        public Net_OnStartGame()
+        public int GameId { get; set; }
+
+        public PacketType Type => PacketType.OnStartGame;
+
+        public void Deserialize(NetDataReader reader)
         {
-            OperationCode = NetOperationCode.OnStartGame;
+            GameId = reader.GetInt();
         }
 
-        public int GameId { get; set; }
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put((byte)Type);
+            writer.Put(GameId);
+        }
     }
 }
