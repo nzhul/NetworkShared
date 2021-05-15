@@ -81,6 +81,12 @@ namespace NetworkingShared
         /// This message is send when the player still have active game and wants to reconnect to it.
         /// </summary>
         ReconnectBattleRequest = 13,
+
+        /// <summary>
+        /// Sends a request for conceding the battle.
+        /// This message is send when the player intentionaly decide that he wan't to loose the battle.
+        /// </summary>
+        ConcedeBattleRequest = 14,
         #endregion
 
 
