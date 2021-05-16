@@ -84,9 +84,15 @@ namespace NetworkingShared
 
         /// <summary>
         /// Sends a request for conceding the battle.
-        /// This message is send when the player intentionaly decide that he wan't to loose the battle.
+        /// This message is send when the player intentionaly decide that he want to loose the battle.
         /// </summary>
         ConcedeBattleRequest = 14,
+
+        /// <summary>
+        /// Sends a request for leaving a game.
+        /// This message is send when the player intentionally decicde that he want to loose the game.
+        /// </summary>
+        LeaveGameRequest = 15,
         #endregion
 
 
