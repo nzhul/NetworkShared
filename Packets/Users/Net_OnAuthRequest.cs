@@ -1,5 +1,6 @@
-﻿using NetworkingShared;
+﻿using System;
 using LiteNetLib.Utils;
+using NetworkingShared;
 
 namespace Assets.Scripts.Network.Shared.NetMessages.Users
 {
@@ -13,11 +14,23 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
 
         public string ErrorMessage { get; set; }
 
+        public int? GameId { get; set; }
+
+        public Guid? BattleId { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             ConnectionId = reader.GetInt();
             Success = reader.GetByte();
             ErrorMessage = reader.GetString();
+            if (reader.TryGetInt(out int gameId))
+            {
+                GameId = gameId;
+            }
+            if (reader.TryGetString(out string battleIdString))
+            {
+                BattleId = Guid.Parse(battleIdString);
+            }
         }
 
         public void Serialize(NetDataWriter writer)
@@ -26,6 +39,14 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
             writer.Put(ConnectionId);
             writer.Put(Success);
             writer.Put(ErrorMessage);
+            if (GameId.HasValue)
+            {
+                writer.Put(GameId.Value);
+            }
+            if (BattleId.HasValue)
+            {
+                writer.Put(BattleId.Value.ToString());
+            }
         }
     }
 }
