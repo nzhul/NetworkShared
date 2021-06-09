@@ -19,8 +19,8 @@ namespace NetworkingShared.Packets.World.ServerClient
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
-            CurrentUnitId = reader.GetInt();
             CurrentArmyId = reader.GetInt();
+            CurrentUnitId = reader.GetInt();
 
             var armiesLength = reader.GetUShort();
             Armies = new ArmyParams[armiesLength];
