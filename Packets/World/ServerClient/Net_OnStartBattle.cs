@@ -1,6 +1,5 @@
 ﻿using System;
 using LiteNetLib.Utils;
-using NetworkShared.Enums;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
@@ -10,41 +9,27 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public Guid BattleId { get; set; }
 
-        public int AttackerArmyId { get; set; }
+        public int CurrentArmyId { get; set; }
 
-        public int DefenderArmyId { get; set; }
+        public int CurrentUnitId { get; set; }
 
-        public int SelectedUnitId { get; set; }
-
-        public PlayerType AttackerType { get; set; }
-
-        public PlayerType DefenderType { get; set; }
-
-        public BattleScenario BattleScenario { get; set; }
-
-        public Turn Turn { get; set; }
+        public int[] Armies { get; set; }
 
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
-            AttackerArmyId = reader.GetInt();
-            DefenderArmyId = reader.GetInt();
-            SelectedUnitId = reader.GetInt();
-            AttackerType = (PlayerType)reader.GetByte();
-            DefenderType = (PlayerType)reader.GetByte();
-            BattleScenario = (BattleScenario)reader.GetByte();
+            CurrentUnitId = reader.GetInt();
+            CurrentArmyId = reader.GetInt();
+            Armies = reader.GetIntArray();
         }
 
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
             writer.Put(BattleId.ToString());
-            writer.Put(AttackerArmyId);
-            writer.Put(DefenderArmyId);
-            writer.Put(SelectedUnitId);
-            writer.Put((byte)AttackerType);
-            writer.Put((byte)DefenderType);
-            writer.Put((byte)BattleScenario);
+            writer.Put(CurrentArmyId);
+            writer.Put(CurrentUnitId);
+            writer.PutArray(Armies);
         }
     }
 }

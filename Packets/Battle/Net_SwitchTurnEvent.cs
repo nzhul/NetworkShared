@@ -1,6 +1,5 @@
 ﻿using System;
 using LiteNetLib.Utils;
-using NetworkShared.Enums;
 
 namespace NetworkingShared.Packets.Battle
 {
@@ -11,24 +10,26 @@ namespace NetworkingShared.Packets.Battle
 
         public Guid BattleId { get; set; }
 
+        public int CurrentArmyId { get; set; }
+
         public int CurrentUnitId { get; set; }
 
-        public Turn Turn { get; set; }
+
 
 
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
+            CurrentArmyId = reader.GetInt();
             CurrentUnitId = reader.GetInt();
-            Turn = (Turn)reader.GetByte();
         }
 
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
             writer.Put(BattleId.ToString());
+            writer.Put(CurrentArmyId);
             writer.Put(CurrentUnitId);
-            writer.Put((byte)Turn);
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace NetworkShared.Enums
-{
-    public enum Turn
-    {
-        Attacker,
-        Defender
-    }
-}
+﻿//namespace NetworkShared.Enums
+//{
+//    public enum Turn
+//    {
+//        Attacker,
+//        Defender
+//    }
+//}

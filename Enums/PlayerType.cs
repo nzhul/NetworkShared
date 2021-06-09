@@ -1,8 +1,8 @@
-﻿namespace NetworkShared.Enums
-{
-    public enum PlayerType
-    {
-        Human,
-        AI
-    }
-}
+﻿//namespace NetworkShared.Enums
+//{
+//    public enum PlayerType
+//    {
+//        Human,
+//        AI
+//    }
+//}
