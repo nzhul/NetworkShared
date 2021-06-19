@@ -16,6 +16,10 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public ArmyParams[] Armies { get; set; }
 
+        public int GameId { get; set; }
+
+        public string GameString { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
@@ -28,6 +32,9 @@ namespace NetworkingShared.Packets.World.ServerClient
             {
                 Armies[i] = reader.Get<ArmyParams>();
             }
+
+            GameId = reader.GetInt();
+            GameString = reader.GetString();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -41,6 +48,8 @@ namespace NetworkingShared.Packets.World.ServerClient
             {
                 writer.Put(Armies[i]);
             }
+            writer.Put(GameId);
+            writer.Put(GameString);
         }
     }
 }
