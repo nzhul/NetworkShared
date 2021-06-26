@@ -3,7 +3,7 @@ using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.Battle
 {
-    public struct Net_EndTurnRequest : INetPacket
+    public struct Net_EndBattleTurnRequest : INetPacket
     {
         public PacketType Type => PacketType.EndTurnRequest;
 
