@@ -53,7 +53,7 @@ namespace NetworkingShared
         /// The player should not be able to send such request if current turn is not 
         /// his or there is X time left from his turn.
         /// </summary>
-        EndTurnRequest = 8,
+        EndBattleTurnRequest = 8,
 
         /// <summary>
         /// Sends request for joining the matchmaking queue and start searching for opponent.
@@ -93,6 +93,12 @@ namespace NetworkingShared
         /// This message is send when the player intentionally decicde that he want to loose the game.
         /// </summary>
         LeaveGameRequest = 15,
+
+        /// <summary>
+        /// Sends a request for ending a regular world/map turn.
+        /// If all armies have consumed their movement points, the server will emit NewDayEvent.
+        /// </summary>
+        EndTurnRequest = 16,
         #endregion
 
 

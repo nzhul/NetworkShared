@@ -5,7 +5,7 @@ namespace NetworkingShared.Packets.Battle
 {
     public struct Net_EndBattleTurnRequest : INetPacket
     {
-        public PacketType Type => PacketType.EndTurnRequest;
+        public PacketType Type => PacketType.EndBattleTurnRequest;
 
         public Guid BattleId { get; set; }
 
