@@ -3,9 +3,9 @@ using NetworkingShared;
 
 namespace Assets.Scripts.Network.NetworkShared.Packets.World.ClientServer
 {
-    public struct Net_EndTurnRequest : INetPacket
+    public struct Net_RestRequest : INetPacket
     {
-        public PacketType Type => PacketType.EndTurnRequest;
+        public PacketType Type => PacketType.RestRequest;
 
         public void Deserialize(NetDataReader reader)
         {

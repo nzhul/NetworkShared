@@ -48,7 +48,7 @@ namespace NetworkingShared
         ConfirmLoadingBattleScene = 7,
 
         /// <summary>
-        /// A player that currently have an active turn can send an EndTurnRequest 
+        /// A player that currently have an active turn can send an EndBattleTurnRequest 
         /// to end his turn befire his time expires
         /// The player should not be able to send such request if current turn is not 
         /// his or there is X time left from his turn.
@@ -95,10 +95,10 @@ namespace NetworkingShared
         LeaveGameRequest = 15,
 
         /// <summary>
-        /// Sends a request for ending a regular world/map turn.
+        /// Sends a request for ending a regular world/map turn. Eg: Resting
         /// If all armies have consumed their movement points, the server will emit NewDayEvent.
         /// </summary>
-        EndTurnRequest = 16,
+        RestRequest = 16,
         #endregion
 
 
