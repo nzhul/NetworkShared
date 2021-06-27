@@ -122,7 +122,9 @@ namespace NetworkingShared
 
         OnReconnectBattleFail = 108,
 
-        OnEndGame = 109
+        OnEndGame = 109,
+
+        OnNewDay = 110
 
         #endregion
     }
