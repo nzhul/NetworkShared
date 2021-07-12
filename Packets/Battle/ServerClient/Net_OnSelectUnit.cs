@@ -3,7 +3,7 @@ using NetworkingShared;
 
 namespace GameServer.NetworkShared.Packets.Battle.ServerClient
 {
-    public struct Net_SelectUnitEvent : INetPacket
+    public struct Net_OnSelectUnit : INetPacket
     {
         public PacketType Type => PacketType.SelectUnitEvent;
 
