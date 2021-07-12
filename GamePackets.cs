@@ -99,6 +99,13 @@ namespace NetworkingShared
         /// If all armies have consumed their movement points, the server will emit NewDayEvent.
         /// </summary>
         RestRequest = 16,
+
+        /// <summary>
+        /// Sends a request for selecting a unit.
+        /// Selecting a unit does not mean anything to the gameplay.
+        /// This is just visual representation what the opponent is doing.
+        /// </summary>
+        SelectUnitRequest = 17,
         #endregion
 
 
