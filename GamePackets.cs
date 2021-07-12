@@ -133,7 +133,7 @@ namespace NetworkingShared
 
         OnNewDay = 110,
 
-        SelectUnitEvent = 111
+        OnSelectUnit = 111
 
         #endregion
     }
