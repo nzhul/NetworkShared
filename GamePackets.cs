@@ -131,7 +131,9 @@ namespace NetworkingShared
 
         OnEndGame = 109,
 
-        OnNewDay = 110
+        OnNewDay = 110,
+
+        SelectUnitEvent = 111
 
         #endregion
     }
