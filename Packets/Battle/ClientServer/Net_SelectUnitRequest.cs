@@ -16,6 +16,7 @@ namespace Assets.Scripts.Network.NetworkShared.Packets.Battle
 
         public void Serialize(NetDataWriter writer)
         {
+            writer.Put((byte)Type);
             writer.Put(SelectedUnitId);
         }
     }
