@@ -18,6 +18,8 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public string GameString { get; set; }
 
+        public DateTime CurrentTurnStartTime { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
@@ -32,6 +34,7 @@ namespace NetworkingShared.Packets.World.ServerClient
 
             GameId = reader.GetInt();
             GameString = reader.GetString();
+            CurrentTurnStartTime = DateTime.Parse(reader.GetString());
         }
 
         public void Serialize(NetDataWriter writer)
@@ -46,6 +49,7 @@ namespace NetworkingShared.Packets.World.ServerClient
             }
             writer.Put(GameId);
             writer.Put(GameString);
+            writer.Put(CurrentTurnStartTime.ToString());
         }
     }
 }
