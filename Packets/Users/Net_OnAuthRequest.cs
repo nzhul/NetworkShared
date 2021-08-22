@@ -14,6 +14,12 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
 
         public string ErrorMessage { get; set; }
 
+        public string Username { get; set; }
+
+        public int MMR { get; set; }
+
+        public string Token { get; set; }
+
         public int? GameId { get; set; }
 
         public Guid? BattleId { get; set; }
