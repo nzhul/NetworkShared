@@ -1,6 +1,5 @@
-﻿using System;
+﻿using LiteNetLib.Utils;
 using NetworkingShared;
-using LiteNetLib.Utils;
 
 namespace Assets.Scripts.Network.Shared.NetMessages.Users
 {
@@ -11,66 +10,21 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
     {
         public PacketType Type => PacketType.AuthRequest;
 
-        public int UserId { get; set; }
-
         public string Username { get; set; }
 
-        public int MMR { get; set; }
-
-        public string Token { get; set; }
-
-        public int GameId { get; set; }
-
-        public Guid? BattleId { get; set; }
+        public string Password { get; set; }
 
         public void Deserialize(NetDataReader reader)
         {
-            UserId = reader.GetInt();
             Username = reader.GetString();
-            MMR = reader.GetInt();
-            Token = reader.GetString();
-            GameId = reader.GetInt();
-
-            if (reader.TryGetString(out string battleIdString))
-            {
-                BattleId = Guid.Parse(battleIdString);
-            };
+            Password = reader.GetString();
         }
 
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
-            writer.Put(UserId);
             writer.Put(Username);
-            writer.Put(MMR);
-            writer.Put(Token);
-            writer.Put(GameId);
-            if (BattleId.HasValue)
-            {
-                writer.Put(BattleId.Value.ToString());
-            }
-        }
-
-        public bool IsValid()
-        {
-            bool result = true;
-
-            if (this.UserId == 0)
-            {
-                result = false;
-            }
-
-            if (string.IsNullOrEmpty(this.Username))
-            {
-                result = false;
-            }
-
-            if (string.IsNullOrEmpty(this.Token))
-            {
-                result = false;
-            }
-
-            return result;
+            writer.Put(Password);
         }
     }
 }
