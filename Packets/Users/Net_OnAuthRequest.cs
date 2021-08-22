@@ -14,6 +14,8 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
 
         public string ErrorMessage { get; set; }
 
+        public int UserId { get; set; }
+
         public string Username { get; set; }
 
         public int MMR { get; set; }
@@ -29,6 +31,11 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
             ConnectionId = reader.GetInt();
             Success = reader.GetByte();
             ErrorMessage = reader.GetString();
+            UserId = reader.GetInt();
+            Username = reader.GetString();
+            MMR = reader.GetInt();
+            Token = reader.GetString();
+
             if (reader.TryGetInt(out int gameId))
             {
                 GameId = gameId;
@@ -45,6 +52,11 @@ namespace Assets.Scripts.Network.Shared.NetMessages.Users
             writer.Put(ConnectionId);
             writer.Put(Success);
             writer.Put(ErrorMessage);
+            writer.Put(UserId);
+            writer.Put(Username);
+            writer.Put(MMR);
+            writer.Put(Token);
+
             if (GameId.HasValue)
             {
                 writer.Put(GameId.Value);
