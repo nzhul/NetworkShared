@@ -106,6 +106,13 @@ namespace NetworkingShared
         /// This is just visual representation what the opponent is doing.
         /// </summary>
         SelectUnitRequest = 17,
+
+        /// <summary>
+        /// Sends a reqquest for clearing the selection.
+        /// The server will find the player current selection and clear it.
+        /// It will also send notification to both players about the change.
+        /// </summary>
+        ClearSelectionRequest = 18,
         #endregion
 
 
