@@ -140,7 +140,9 @@ namespace NetworkingShared
 
         OnNewDay = 110,
 
-        OnSelectUnit = 111
+        OnSelectUnit = 111,
+
+        OnClearSelection = 112
 
         #endregion
     }
