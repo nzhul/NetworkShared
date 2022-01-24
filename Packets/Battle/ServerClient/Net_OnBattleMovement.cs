@@ -4,7 +4,7 @@ using NetworkShared.Models;
 
 namespace Assets.Scripts.Network.NetworkShared.Packets.Battle.ServerClient
 {
-    public class Net_OnBattleMovement : INetPacket
+    public struct Net_OnBattleMovement : INetPacket
     {
         public PacketType Type => PacketType.OnBattleMovement;
 
