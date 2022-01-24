@@ -113,6 +113,12 @@ namespace NetworkingShared
         /// It will also send notification to both players about the change.
         /// </summary>
         ClearSelectionRequest = 18,
+
+        /// <summary>
+        /// Sends entity movement request.
+        /// Server should validate if movement is allowed, by executing the pathfinding again on the server.
+        /// </summary>
+        BattleMovementRequest = 19,
         #endregion
 
 
@@ -142,7 +148,9 @@ namespace NetworkingShared
 
         OnSelectUnit = 111,
 
-        OnClearSelection = 112
+        OnClearSelection = 112,
+
+        OnBattleMovement = 113
 
         #endregion
     }
