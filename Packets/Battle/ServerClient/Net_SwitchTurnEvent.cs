@@ -14,11 +14,14 @@ namespace NetworkingShared.Packets.Battle
 
         public int ExhaustedUnitId { get; set; }
 
+        public int CurrentUnitId { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
             CurrentArmyId = reader.GetInt();
             ExhaustedUnitId = reader.GetInt();
+            CurrentUnitId = reader.GetInt();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -27,6 +30,7 @@ namespace NetworkingShared.Packets.Battle
             writer.Put(BattleId.ToString());
             writer.Put(CurrentArmyId);
             writer.Put(ExhaustedUnitId);
+            writer.Put(CurrentUnitId);
         }
     }
 }
