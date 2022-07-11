@@ -1,13 +1,10 @@
-﻿using System;
-using LiteNetLib.Utils;
+﻿using LiteNetLib.Utils;
 
 namespace NetworkingShared.Packets.Battle
 {
     public struct Net_EndBattleTurnRequest : INetPacket
     {
         public PacketType Type => PacketType.EndBattleTurnRequest;
-
-        public Guid BattleId { get; set; }
 
         public int RequesterArmyId { get; set; }
 
@@ -17,7 +14,6 @@ namespace NetworkingShared.Packets.Battle
 
         public void Deserialize(NetDataReader reader)
         {
-            BattleId = Guid.Parse(reader.GetString());
             RequesterArmyId = reader.GetInt();
             RequesterUnitId = reader.GetInt();
             IsDefend = reader.GetBool();
@@ -26,7 +22,6 @@ namespace NetworkingShared.Packets.Battle
         public void Serialize(NetDataWriter writer)
         {
             writer.Put((byte)Type);
-            writer.Put(BattleId.ToString());
             writer.Put(RequesterArmyId);
             writer.Put(RequesterUnitId);
             writer.Put(IsDefend);
