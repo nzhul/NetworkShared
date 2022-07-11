@@ -18,6 +18,8 @@ namespace NetworkingShared.Packets.Battle
 
         public int Round { get; set; }
 
+        public bool IsNewRound { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             BattleId = Guid.Parse(reader.GetString());
@@ -25,6 +27,7 @@ namespace NetworkingShared.Packets.Battle
             ExhaustedUnitId = reader.GetInt();
             CurrentUnitId = reader.GetInt();
             Round = reader.GetInt();
+            IsNewRound = reader.GetBool();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -35,6 +38,7 @@ namespace NetworkingShared.Packets.Battle
             writer.Put(ExhaustedUnitId);
             writer.Put(CurrentUnitId);
             writer.Put(Round);
+            writer.Put(IsNewRound);
         }
     }
 }
