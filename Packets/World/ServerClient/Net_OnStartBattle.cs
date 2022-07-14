@@ -36,7 +36,8 @@ namespace NetworkingShared.Packets.World.ServerClient
 
             GameId = reader.GetInt();
             GameString = reader.GetString();
-            GameState = reader.Get<GameNetDto>();
+            var gameStateExist = reader.GetBool();
+            if(gameStateExist) GameState = reader.Get<GameNetDto>();
             CurrentTurnStartTime = DateTime.Parse(reader.GetString());
         }
 
@@ -52,7 +53,18 @@ namespace NetworkingShared.Packets.World.ServerClient
             }
             writer.Put(GameId);
             writer.Put(GameString);
-            writer.Put(GameState);
+
+            if (GameState != null)
+            {
+                writer.Put(true);
+                writer.Put(GameState);
+            }
+            else
+            {
+                writer.Put(false);
+            }
+
+
             writer.Put(CurrentTurnStartTime.ToString());
         }
     }
