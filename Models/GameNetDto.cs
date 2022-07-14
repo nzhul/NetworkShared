@@ -44,24 +44,28 @@ namespace NetworkShared.Models
             CurrentDayStartTime = DateTime.Parse(reader.GetString());
 
             var armiesLength = reader.GetUShort();
+            Armies = new ArmyNetDto[armiesLength];
             for (int i = 0; i < armiesLength; i++)
             {
                 Armies[i] = reader.Get<ArmyNetDto>();
             }
 
             var dwellingsLength = reader.GetUShort();
+            Dwellings = new DwellingNetDto[dwellingsLength];
             for (int i = 0; i < dwellingsLength; i++)
             {
                 Dwellings[i] = reader.Get<DwellingNetDto>();
             }
 
             var avatarsLength = reader.GetUShort();
+            Avatars = new AvatarNetDto[avatarsLength];
             for (int i = 0; i < avatarsLength; i++)
             {
                 Avatars[i] = reader.Get<AvatarNetDto>();
             }
 
             var usersLength = reader.GetUShort();
+            Users = new UserNetDto[usersLength];
             for (int i = 0; i < usersLength; i++)
             {
                 Users[i] = reader.Get<UserNetDto>();
