@@ -1,6 +1,6 @@
 ﻿using LiteNetLib.Utils;
 
-namespace GameServer.NetworkShared.Models
+namespace NetworkShared.Models
 {
     public class ArmyParams : INetSerializable
     {

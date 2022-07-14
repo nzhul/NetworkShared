@@ -1,6 +1,6 @@
-﻿using System;
-using GameServer.NetworkShared.Models;
-using LiteNetLib.Utils;
+﻿using LiteNetLib.Utils;
+using NetworkShared.Models;
+using System;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
@@ -18,6 +18,8 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public string GameString { get; set; }
 
+        public GameNetDto GameState { get; set; }
+
         public DateTime CurrentTurnStartTime { get; set; }
 
         public void Deserialize(NetDataReader reader)
@@ -34,6 +36,7 @@ namespace NetworkingShared.Packets.World.ServerClient
 
             GameId = reader.GetInt();
             GameString = reader.GetString();
+            GameState = reader.Get<GameNetDto>();
             CurrentTurnStartTime = DateTime.Parse(reader.GetString());
         }
 
@@ -49,6 +52,7 @@ namespace NetworkingShared.Packets.World.ServerClient
             }
             writer.Put(GameId);
             writer.Put(GameString);
+            writer.Put(GameState);
             writer.Put(CurrentTurnStartTime.ToString());
         }
     }

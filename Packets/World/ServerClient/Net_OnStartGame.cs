@@ -1,4 +1,5 @@
 ﻿using LiteNetLib.Utils;
+using NetworkShared.Models;
 
 namespace NetworkingShared.Packets.World.ServerClient
 {
@@ -8,12 +9,15 @@ namespace NetworkingShared.Packets.World.ServerClient
 
         public string GameString { get; set; }
 
+        public GameNetDto GameState { get; set; }
+
         public PacketType Type => PacketType.OnStartGame;
 
         public void Deserialize(NetDataReader reader)
         {
             GameId = reader.GetInt();
             GameString = reader.GetString();
+            GameState = reader.Get<GameNetDto>();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -21,6 +25,7 @@ namespace NetworkingShared.Packets.World.ServerClient
             writer.Put((byte)Type);
             writer.Put(GameId);
             writer.Put(GameString);
+            writer.Put(GameState);
         }
     }
 }
