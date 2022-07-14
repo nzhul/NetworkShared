@@ -14,11 +14,11 @@ namespace NetworkShared.Models
 
         public DwellingType Type { get; set; }
 
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
-        public int? GameId { get; set; }
+        public int GameId { get; set; }
 
-        public int? GuardianId { get; set; }
+        public int GuardianId { get; set; }
 
         public string OccupiedTilesString { get; set; }
 
@@ -31,9 +31,9 @@ namespace NetworkShared.Models
             Y = reader.GetInt();
             Team = (Team)reader.GetByte();
             Type = (DwellingType)reader.GetByte();
-            if (reader.TryGetInt(out int userId)) UserId = userId;
-            if (reader.TryGetInt(out int gameId)) GameId = gameId;
-            if (reader.TryGetInt(out int guardianId)) GuardianId = guardianId;
+            UserId = reader.GetInt();
+            GameId = reader.GetInt();
+            GuardianId = reader.GetInt();
             OccupiedTilesString = reader.GetString();
             VisitorsString = reader.GetString();
         }
@@ -45,9 +45,9 @@ namespace NetworkShared.Models
             writer.Put(Y);
             writer.Put((byte)Type);
             writer.Put((byte)Team);
-            if (UserId.HasValue) writer.Put(UserId.Value);
-            if (GameId.HasValue) writer.Put(GameId.Value);
-            if (GuardianId.HasValue) writer.Put(GuardianId.Value);
+            writer.Put(UserId);
+            writer.Put(GameId);
+            writer.Put(GuardianId);
             writer.Put(OccupiedTilesString);
             writer.Put(VisitorsString);
         }

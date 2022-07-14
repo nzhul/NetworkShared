@@ -17,11 +17,11 @@ namespace NetworkShared.Models
 
         public int Level { get; set; }
 
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
-        public int? GameId { get; set; }
+        public int GameId { get; set; }
 
-        public int? ArmyId { get; set; }
+        public int ArmyId { get; set; }
 
         public CreatureType Type { get; set; }
 
@@ -41,9 +41,9 @@ namespace NetworkShared.Models
             StartX = reader.GetInt();
             StartY = reader.GetInt();
             Level = reader.GetInt();
-            if (reader.TryGetInt(out int userId)) UserId = userId;
-            if (reader.TryGetInt(out int gameId)) GameId = gameId;
-            if (reader.TryGetInt(out int armyId)) ArmyId = armyId;
+            UserId = reader.GetInt();
+            GameId = reader.GetInt();
+            ArmyId = reader.GetInt();
             Type = (CreatureType)reader.GetByte();
             Quantity = reader.GetInt();
             MovementPoints = reader.GetInt();
@@ -59,9 +59,9 @@ namespace NetworkShared.Models
             writer.Put(StartX);
             writer.Put(StartY);
             writer.Put(Level);
-            if (UserId.HasValue) writer.Put(UserId.Value);
-            if (GameId.HasValue) writer.Put(GameId.Value);
-            if (ArmyId.HasValue) writer.Put(ArmyId.Value);
+            writer.Put(UserId);
+            writer.Put(GameId);
+            writer.Put(ArmyId);
             writer.Put((byte)Type);
             writer.Put(Quantity);
             writer.Put(MovementPoints);

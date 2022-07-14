@@ -6,9 +6,9 @@ namespace NetworkShared.Models
     {
         public int Id { get; set; }
 
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
-        public int? GameId { get; set; }
+        public int GameId { get; set; }
 
         public int X { get; set; }
 
@@ -29,17 +29,8 @@ namespace NetworkShared.Models
         public void Deserialize(NetDataReader reader)
         {
             Id = reader.GetInt();
-
-            if (reader.TryGetInt(out int userId))
-            {
-                UserId = userId;
-            }
-
-            if (reader.TryGetInt(out int gameId))
-            {
-                GameId = gameId;
-            }
-
+            UserId = reader.GetInt();
+            GameId = reader.GetInt();
             X = reader.GetInt();
             Y = reader.GetInt();
 
@@ -62,17 +53,8 @@ namespace NetworkShared.Models
         public void Serialize(NetDataWriter writer)
         {
             writer.Put(Id);
-
-            if (UserId.HasValue)
-            {
-                writer.Put(UserId.Value);
-            }
-
-            if (GameId.HasValue)
-            {
-                writer.Put(GameId.Value);
-            }
-
+            writer.Put(UserId);
+            writer.Put(GameId);
             writer.Put(X);
             writer.Put(Y);
 
