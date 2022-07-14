@@ -87,6 +87,8 @@ namespace NetworkShared.Models
             }
 
             writer.Put(IsNPC);
+            writer.Put((byte)Team);
+            writer.Put(OwnerSelectedUnitId);
             writer.Put(EnemySelectedUnitId);
             writer.Put((ushort)Units.Length);
             for (int i = 0; i < Units.Length; i++)
