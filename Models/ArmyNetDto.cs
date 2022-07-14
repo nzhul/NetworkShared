@@ -42,7 +42,10 @@ namespace NetworkShared.Models
 
             X = reader.GetInt();
             Y = reader.GetInt();
-            NPCData = reader.Get<NPCDataNetDto>();
+
+            var npcDataExists = reader.GetBool();
+            if (npcDataExists) NPCData = reader.Get<NPCDataNetDto>();
+
             IsNPC = reader.GetBool();
             Team = (Team)reader.GetByte();
             OwnerSelectedUnitId = reader.GetInt();
@@ -72,7 +75,17 @@ namespace NetworkShared.Models
 
             writer.Put(X);
             writer.Put(Y);
-            if (NPCData != null) writer.Put(NPCData);
+
+            if (NPCData != null)
+            {
+                writer.Put(true);
+                writer.Put(NPCData);
+            }
+            else
+            {
+                writer.Put(false);
+            }
+
             writer.Put(IsNPC);
             writer.Put(EnemySelectedUnitId);
             writer.Put((ushort)Units.Length);
