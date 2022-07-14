@@ -72,7 +72,7 @@ namespace NetworkShared.Models
 
             writer.Put(X);
             writer.Put(Y);
-            writer.Put(NPCData);
+            if (NPCData != null) writer.Put(NPCData);
             writer.Put(IsNPC);
             writer.Put(EnemySelectedUnitId);
             writer.Put((ushort)Units.Length);

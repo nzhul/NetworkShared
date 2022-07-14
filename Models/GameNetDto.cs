@@ -76,6 +76,11 @@ namespace NetworkShared.Models
 
             // "O" > Roundtrip formatter. https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings?redirectedfrom=MSDN#Roundtrip
             writer.Put(StartTime.ToString("O"));
+            writer.Put(Day);
+            writer.Put(Week);
+            writer.Put(Month);
+            writer.Put(TotalDays);
+            writer.Put(CurrentDayStartTime.ToString("O"));
 
             writer.Put((ushort)Armies.Length);
             for (int i = 0; i < Armies.Length; i++)
