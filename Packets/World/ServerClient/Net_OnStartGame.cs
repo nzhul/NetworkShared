@@ -7,8 +7,6 @@ namespace NetworkingShared.Packets.World.ServerClient
     {
         public int GameId { get; set; }
 
-        public string GameString { get; set; }
-
         public GameNetDto GameState { get; set; }
 
         public PacketType Type => PacketType.OnStartGame;
@@ -16,7 +14,6 @@ namespace NetworkingShared.Packets.World.ServerClient
         public void Deserialize(NetDataReader reader)
         {
             GameId = reader.GetInt();
-            GameString = reader.GetString();
             GameState = reader.Get<GameNetDto>();
         }
 
@@ -24,7 +21,6 @@ namespace NetworkingShared.Packets.World.ServerClient
         {
             writer.Put((byte)Type);
             writer.Put(GameId);
-            writer.Put(GameString);
             writer.Put(GameState);
         }
     }
