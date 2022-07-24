@@ -119,6 +119,13 @@ namespace NetworkingShared
         /// Server should validate if movement is allowed, by executing the pathfinding again on the server.
         /// </summary>
         BattleMovementRequest = 19,
+
+        /// <summary>
+        /// Sends attack request
+        /// Server should validate if attack is allowed, by checking the attack range of the attacker and the distance of the target.
+        /// Both melee and ranged attacks can have range. Most of the melee attacks will have range of 1, but this will allow us to have melee attacks that is 2 or 3 range.
+        /// </summary>
+        BattleAttackRequest = 20,
         #endregion
 
 
@@ -150,7 +157,9 @@ namespace NetworkingShared
 
         OnClearSelection = 112,
 
-        OnBattleMovement = 113
+        OnBattleMovement = 113,
+
+        OnBattleAttack = 114
 
         #endregion
     }
