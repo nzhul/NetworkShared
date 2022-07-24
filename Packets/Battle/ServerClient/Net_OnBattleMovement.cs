@@ -12,10 +12,16 @@ namespace Assets.Scripts.Network.NetworkShared.Packets.Battle.ServerClient
 
         public Coord Destination { get; set; }
 
+        public bool ShouldAttackTarget { get; set; }
+
+        public int TargetUnitId { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             UnitId = reader.GetInt();
             Destination = reader.Get<Coord>();
+            ShouldAttackTarget = reader.GetBool();
+            TargetUnitId = reader.GetInt();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -23,6 +29,8 @@ namespace Assets.Scripts.Network.NetworkShared.Packets.Battle.ServerClient
             writer.Put((byte)Type);
             writer.Put(UnitId);
             writer.Put(Destination);
+            writer.Put(ShouldAttackTarget);
+            writer.Put(TargetUnitId);
         }
     }
 }
