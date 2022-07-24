@@ -33,6 +33,8 @@ namespace NetworkShared.Models
 
         public int Mana { get; set; }
 
+        public int ActionPoints { get; set; }
+
         public void Deserialize(NetDataReader reader)
         {
             Id = reader.GetInt();
@@ -49,6 +51,7 @@ namespace NetworkShared.Models
             MovementPoints = reader.GetInt();
             Hitpoints = reader.GetInt();
             Mana = reader.GetInt();
+            ActionPoints = reader.GetInt();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -67,6 +70,7 @@ namespace NetworkShared.Models
             writer.Put(MovementPoints);
             writer.Put(Hitpoints);
             writer.Put(Mana);
+            writer.Put(ActionPoints);
         }
     }
 }
