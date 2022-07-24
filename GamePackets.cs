@@ -159,7 +159,9 @@ namespace NetworkingShared
 
         OnBattleMovement = 113,
 
-        OnBattleAttack = 114
+        OnBattleAttack = 114,
+
+        // !!! dido I Am serializing the type as (byte). Byte max size is 126. I will probably get an error once i reach 126.
 
         #endregion
     }

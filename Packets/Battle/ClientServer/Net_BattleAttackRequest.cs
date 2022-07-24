@@ -19,6 +19,7 @@ namespace GameServer.NetworkShared.Packets.Battle.ClientServer
 
         public void Serialize(NetDataWriter writer)
         {
+            writer.Put((byte)Type);
             writer.Put(AttackerUnitId);
             writer.Put(TargetUnitId);
         }
